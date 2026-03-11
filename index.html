@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tictact Factory | Achat, Vente & Réparation de Montres Vintage</title>
+    <meta name="description" content="Tictact Factory, atelier spécialisé dans l'achat, la vente, la réparation et l'expertise de montres vintage et anciennes. Service d'expertise indépendant et accompagnement sur-mesure.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37', /* Or véritable */
+                        darkGold: '#B8860B',
+                        creme: '#FDFCF8', /* Inspiré par Keasy */
+                        deepBlue: '#0A1128',
+                        charcoal: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+</head>
+<body class="bg-creme font-sans text-charcoal overflow-x-hidden">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-8 px-12" id="header">
+        <div class="max-w-[1800px] mx-auto flex justify-between items-center bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-3 md:px-10 md:py-4 shadow-2xl">
+            <div class="logo">
+                <a href="index.html" class="flex items-center">
+                    <img src="logo.jpg" alt="Tictact Factory Logo" class="h-14 w-14 rounded-full object-cover transform transition hover:scale-105">
+                </a>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-12 uppercase text-[10px] tracking-[0.4em] font-semibold text-white/80">
+                <a href="index.html" class="hover:text-gold transition-colors duration-300 link-active border-b border-gold pb-1">Accueil</a>
+                <a href="apropos.html" class="hover:text-gold transition-colors duration-300">À Propos</a>
+                <a href="services.html" class="hover:text-gold transition-colors duration-300">Services</a>
+                <a href="extras.html" class="hover:text-gold transition-colors duration-300">Extras</a>
+                <a href="proprietaire.html" class="hover:text-gold transition-colors duration-300">Propriétaire</a>
+                <a href="locataire.html" class="hover:text-gold transition-colors duration-300">Locataire</a>
+                <a href="contact.html" class="hover:text-gold transition-colors duration-300">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-6">
+                <a href="https://www.instagram.com/tictactfactory" target="_blank" class="text-white/60 hover:text-gold transition-colors duration-300 text-lg">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="contact.html" class="hidden md:block bg-gold/90 text-white px-8 py-3 rounded-full uppercase text-[10px] tracking-widest font-bold hover:bg-gold transition-all shadow-lg hover:shadow-gold/20">
+                    Prendre rendez-vous
+                </a>
+                <button class="lg:hidden text-white" id="menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-[95vh] flex items-center justify-center overflow-hidden mx-4 my-4 rounded-[40px] shadow-3xl">
+        <!-- Background Overlay -->
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60"></div>
+        <!-- Background montre vintage -->
+        <div class="absolute inset-0 z-[-1] bg-cover bg-fixed bg-center" style="background-image: url('https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&q=80&w=2070')"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center text-white">
+            <div class="inline-block px-4 py-1 border border-gold/50 rounded-full mb-8 backdrop-blur-md animate-fade-in">
+                <p class="uppercase tracking-[0.6em] text-[8px] md:text-[10px] font-bold text-gold">Montres Vintage • Achat • Vente • Réparation</p>
+            </div>
+            <h1 class="text-6xl md:text-9xl font-serif mb-12 leading-tight animate-fade-in-up">L'Art du Temps <br><span class="text-gold italic underline decoration-gold/20 decoration-1 underline-offset-8">Tictact Factory</span></h1>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12 mt-16">
+                <a href="proprietaire.html" class="group relative px-12 py-5 overflow-hidden rounded-full bg-white text-charcoal font-bold uppercase tracking-widest text-[11px] transition-all hover:pr-16">
+                    <span class="relative z-10">Faire expertiser / vendre</span>
+                    <i class="fas fa-arrow-right absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                </a>
+                <a href="locataire.html" class="group px-12 py-5 rounded-full border border-white/30 text-white font-bold uppercase tracking-widest text-[11px] hover:bg-white/10 transition-all backdrop-blur-sm">
+                    Découvrir les montres
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-16 right-16 flex flex-col space-y-8 text-white/40 text-xs tracking-widest uppercase font-bold transform rotate-90 origin-right">
+            <span>Scroll pour explorer</span>
+        </div>
+    </section>
+
+    <!-- Partners / Trust Bar -->
+    <div class="py-12 bg-white flex justify-center items-center space-x-16 opacity-40 grayscale saturate-0 px-6 overflow-hidden flex-wrap gap-y-8">
+        <span class="font-serif text-xl tracking-[0.2em]">ROLEX</span>
+        <span class="font-serif text-xl tracking-[0.2em]">OMEGA</span>
+        <span class="font-serif text-xl tracking-[0.2em]">HEUER</span>
+        <span class="font-serif text-xl tracking-[0.2em]">LONGINES</span>
+    </div>
+    <!-- Excellence Section -->
+    <section class="py-16 md:py-32 bg-creme relative">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="grid lg:grid-cols-2 gap-24 items-center reveal">
+                <div class="relative">
+                    <div class="aspect-[4/5] overflow-hidden rounded-tr-[100px] rounded-bl-[100px] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&q=80&w=2000" alt="Montre vintage sur établi d'horloger" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-12 -right-12 space-y-4 hidden lg:block">
+                        <div class="bg-white p-10 shadow-3xl rounded-[30px] border border-gold/10 backdrop-blur-sm max-w-[220px]">
+                            <p class="text-gold text-3xl font-serif mb-1 italic">+15 ans</p>
+                            <p class="text-charcoal uppercase tracking-[0.2em] text-[9px] font-bold leading-tight">D'expertise horlogère indépendante</p>
+                        </div>
+                        <div class="bg-gold p-8 shadow-3xl rounded-[30px] border border-white/20 transform translate-x-12">
+                            <p class="text-white text-3xl font-serif mb-1 italic">48 h</p>
+                            <p class="text-white/90 uppercase tracking-[0.2em] text-[9px] font-bold leading-tight">Délai moyen pour une première estimation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-10">
+                    <p class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold">Notre Identité</p>
+                    <h2 class="text-5xl md:text-7xl font-serif text-charcoal leading-tight">L'Horlogerie <br><span class="italic font-normal text-gold">de Collection</span></h2>
+                    <p class="text-lg text-gray-600 font-light leading-relaxed">
+                        Chez <span class="font-bold text-charcoal">Tictact Factory</span>, nous redonnons vie aux montres de caractère. Achat, vente, restauration et expertise : nous accompagnons collectionneurs et particuliers à chaque étape, avec une transparence totale sur l'état, la valeur et l'histoire de chaque pièce.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 pt-8">
+                        <div>
+                            <h4 class="font-bold text-charcoal uppercase tracking-widest text-xs mb-4 flex items-center"><span class="w-2 h-2 bg-gold rounded-full mr-3"></span>Expertise</h4>
+                            <p class="text-gray-500 text-sm font-light">Contrôle minutieux des mouvements, boîtiers, cadrans et bracelets par un horloger spécialisé.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-charcoal uppercase tracking-widest text-xs mb-4 flex items-center"><span class="w-2 h-2 bg-gold rounded-full mr-3"></span>Accompagnement</h4>
+                            <p class="text-gray-500 text-sm font-light">Conseils objectifs pour acheter, vendre ou conserver vos montres dans les meilleures conditions.</p>
+                        </div>
+                    </div>
+                    <a href="services.html" class="inline-block mt-8 text-charcoal border-b-2 border-gold/30 pb-2 uppercase tracking-[0.3em] text-[11px] font-bold hover:text-gold hover:border-gold transition-all">Consulter l'offre complète</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-32 bg-white" id="services">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-32">
+                <p class="text-gold uppercase tracking-[0.6em] text-[10px] font-bold mb-6 italic text-center w-full">Nos Piliers</p>
+                <h2 class="text-6xl md:text-8xl font-serif text-charcoal">Services <span class="text-gold italic">Horlogers</span></h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-12 lg:gap-24 reveal">
+                <!-- Service 1 -->
+                <div class="group">
+                    <div class="overflow-hidden mb-12 relative rounded-[60px] shadow-3xl">
+                        <img src="https://images.unsplash.com/photo-1524594154908-edd36065223a?auto=format&fit=crop&q=80&w=1000" alt="Achat de montres vintage" class="w-full h-[500px] object-cover transition duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center backdrop-blur-md px-12 text-center">
+                            <p class="text-white text-sm font-light italic leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-all delay-100">Reprise de vos montres de collection au prix juste, avec estimation détaillée et sans pression.</p>
+                            <a href="services.html" class="absolute bottom-12 px-10 py-4 bg-white text-charcoal tracking-widest uppercase text-[10px] font-bold rounded-full hover:bg-gold hover:text-white transition-all shadow-xl">Découvrir</a>
+                        </div>
+                        <div class="absolute top-8 left-8 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 text-white font-serif italic">01</div>
+                    </div>
+                    <div class="px-4">
+                        <h3 class="text-4xl font-serif mb-6 text-charcoal italic leading-tight">Achat &amp; Reprise</h3>
+                        <p class="text-gray-500 font-light leading-relaxed mb-8">Vendez votre montre vintage ou ancienne en toute confiance, avec une offre transparente et expliquée poste par poste.</p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group lg:translate-y-12">
+                    <div class="overflow-hidden mb-12 relative rounded-[60px] shadow-3xl">
+                        <img src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&fit=crop&q=80&w=1000" alt="Sélection de montres vintage" class="w-full h-[500px] object-cover transition duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center backdrop-blur-md px-12 text-center">
+                            <p class="text-white text-sm font-light italic leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-all delay-100">Sélection rigoureuse de montres authentifiées, révisées et prêtes à porter, avec historique détaillé.</p>
+                            <a href="services.html" class="absolute bottom-12 px-10 py-4 bg-white text-charcoal tracking-widest uppercase text-[10px] font-bold rounded-full hover:bg-gold hover:text-white transition-all shadow-xl">Découvrir</a>
+                        </div>
+                        <div class="absolute top-8 left-8 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 text-white font-serif italic">02</div>
+                    </div>
+                    <div class="px-4">
+                        <h3 class="text-4xl font-serif mb-6 text-charcoal italic leading-tight">Vente &amp; Sélection</h3>
+                        <p class="text-gray-500 font-light leading-relaxed mb-8">Trouvez la pièce qui vous correspond : premières montres, icônes de collection ou modèles plus confidentiels.</p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group">
+                    <div class="overflow-hidden mb-12 relative rounded-[60px] shadow-3xl">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=1000" alt="Atelier horloger" class="w-full h-[500px] object-cover transition duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center backdrop-blur-md px-12 text-center">
+                            <p class="text-white text-sm font-light italic leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-all delay-100">Révision complète, polissage maîtrisé et réparations délicates dans le respect de l'authenticité de la montre.</p>
+                            <a href="services.html" class="absolute bottom-12 px-10 py-4 bg-white text-charcoal tracking-widest uppercase text-[10px] font-bold rounded-full hover:bg-gold hover:text-white transition-all shadow-xl">Découvrir</a>
+                        </div>
+                        <div class="absolute top-8 left-8 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 text-white font-serif italic">03</div>
+                    </div>
+                    <div class="px-4">
+                        <h3 class="text-4xl font-serif mb-6 text-charcoal italic leading-tight">Atelier &amp; Réparation</h3>
+                        <p class="text-gray-500 font-light leading-relaxed mb-8">Confiez vos montres à un atelier spécialisé dans les mouvements anciens et les pièces de collection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ce qui nous distingue -->
+    <section class="py-24 md:py-32 bg-creme">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-20">
+                <p class="text-gold uppercase tracking-[0.5em] text-[10px] font-bold mb-4 italic">Notre Différence</p>
+                <h2 class="text-4xl md:text-6xl font-serif text-charcoal">Ce qui nous <span class="text-gold italic">Distingue</span></h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Système de note Airbnb -->
+                <div class="bg-white rounded-3xl shadow-2xl border border-gold/10 p-8 flex flex-col justify-between">
+                    <div>
+                        <p class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4">Expertise</p>
+                        <h3 class="font-serif text-2xl italic mb-4 text-charcoal">Rapports détaillés</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">
+                            Compte-rendu précis sur l'authenticité, l'état, le mouvement et la valeur estimée de chaque montre, avec photos à l'appui.
+                        </p>
+                    </div>
+                </div>
+                <!-- Livre d'or -->
+                <div class="bg-white rounded-3xl shadow-2xl border border-gold/10 p-8 flex flex-col justify-between">
+                    <div>
+                        <p class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4">Confiance</p>
+                        <h3 class="font-serif text-2xl italic mb-4 text-charcoal">Avis &amp; Historique</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">
+                            Témoignages de collectionneurs et particuliers, traçabilité de la provenance et historique des interventions sur vos montres.
+                        </p>
+                    </div>
+                </div>
+                <!-- Extras -->
+                <div class="bg-white rounded-3xl shadow-2xl border border-gold/10 p-8 flex flex-col justify-between">
+                    <div>
+                        <p class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4">Services Premium</p>
+                        <h3 class="font-serif text-2xl italic mb-4 text-charcoal">Accompagnement dédié</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                            Sourcing de pièces rares, accompagnement en salle des ventes et conseil pour la construction de collection sur le long terme.
+                        </p>
+                    </div>
+                    <a href="extras.html" class="inline-block mt-2 text-gold border-b border-gold/40 pb-1 uppercase tracking-[0.25em] text-[9px] font-bold hover:text-charcoal hover:border-charcoal transition">
+                        Découvrir les extras
+                    </a>
+                </div>
+                <!-- Commission au CA -->
+                <div class="bg-charcoal rounded-3xl shadow-2xl border border-gold/10 p-8 text-white flex flex-col justify-between">
+                    <div>
+                        <p class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4">Transparence</p>
+                        <h3 class="font-serif text-2xl italic mb-4">Honoraires clairs</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                            Aucun frais caché : barème d'honoraires et marges clairement expliqués avant toute opération d'achat, de vente ou de réparation.
+                        </p>
+                        <p class="text-[9px] uppercase tracking-[0.25em] text-white/50 font-bold">
+                            Intérêts parfaitement alignés avec les vôtres
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us - Testimonials & Core values -->
+    <section class="py-16 md:py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-24">
+                <p class="text-gold uppercase tracking-[0.5em] text-[10px] font-bold mb-4 italic">Expérience Client</p>
+                <h2 class="text-5xl font-serif text-charcoal">Ils nous font <span class="text-gold italic">Confiance</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
+                <!-- Témoignage 1 -->
+                <div class="p-10 border border-gold/10 rounded-3xl hover:border-gold/30 hover:shadow-2xl hover:shadow-gold/5 transition-all outline outline-1 outline-gold/5">
+                    <div class="flex text-gold text-xs space-x-1 mb-8">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 font-light italic mb-8 leading-relaxed">"Tictact Factory m'a accompagné de l'estimation à la vente de ma Submariner des années 70. Rapport clair, prix cohérent et règlement rapide."</p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=100&auto=format&fit=crop" alt="Marc L." class="w-12 h-12 rounded-full object-cover border-2 border-gold/20 shadow-lg">
+                        <div>
+                            <p class="text-[11px] font-bold uppercase tracking-widest text-charcoal">Marc L.</p>
+                            <p class="text-[9px] text-gray-400">Collectionneur - Lyon</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Témoignage 2 -->
+                <div class="p-10 bg-charcoal text-white rounded-3xl shadow-2xl relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-gold/5 rounded-full blur-3xl"></div>
+                    <div class="flex text-gold text-xs space-x-1 mb-8 relative z-10">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 font-light italic mb-8 leading-relaxed relative z-10">"J'ai confié la révision de la montre de mon grand-père. Le mouvement a été sauvé et l'esthétique respectée. On m'a tout expliqué avant chaque intervention."</p>
+                    <div class="flex items-center space-x-4 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop" alt="Sophie R." class="w-12 h-12 rounded-full object-cover border-2 border-white/10 shadow-lg">
+                        <div>
+                            <p class="text-[11px] font-bold uppercase tracking-widest text-white">Sophie R.</p>
+                            <p class="text-[9px] text-gray-400 text-white/50">Particulière - Genève</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Valeur centrale -->
+                <div class="p-10 flex flex-col justify-center items-center text-center">
+                    <img src="logo.jpg" alt="Tictact Factory" class="h-24 w-24 rounded-full object-cover opacity-10 mb-8 pointer-events-none">
+                    <p class="text-charcoal uppercase tracking-[0.3em] font-bold text-[10px] mb-4">Donner du Temps au Temps</p>
+                    <p class="text-gray-500 text-xs font-light leading-relaxed mb-8">Chaque montre a une histoire. Notre rôle est de la comprendre, de la préserver et de vous guider pour la transmettre ou la faire évoluer.</p>
+                    <a href="contact.html" class="px-8 py-3 rounded-full border border-gold text-gold font-bold uppercase tracking-widest text-[9px] hover:bg-gold hover:text-white transition-all">Parler de mon projet</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Style Section -->
+    <section class="py-24 bg-creme border-y border-gold/10">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <h2 class="text-2xl font-serif text-charcoal mb-12 flex items-center">
+                <i class="fab fa-instagram mr-4 text-gold"></i> @tictactfactory
+                <span class="flex-grow h-px bg-gold/20 ml-8"></span>
+            </h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Mockup Instagram Post 1 -->
+                <div class="aspect-square bg-gray-200 overflow-hidden rounded-xl shadow-lg relative group">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white space-x-4">
+                        <span><i class="fas fa-heart"></i> 156</span>
+                        <span><i class="fas fa-comment"></i> 12</span>
+                    </div>
+                </div>
+                <!-- Mockup Instagram Post 2 -->
+                <div class="aspect-square bg-gray-200 overflow-hidden rounded-xl shadow-lg relative group">
+                    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white space-x-4">
+                        <span><i class="fas fa-heart"></i> 89</span>
+                        <span><i class="fas fa-comment"></i> 4</span>
+                    </div>
+                </div>
+                <!-- Mockup Instagram Post 3 -->
+                <div class="aspect-square bg-gray-200 overflow-hidden rounded-xl shadow-lg relative group">
+                    <img src="https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white space-x-4">
+                        <span><i class="fas fa-heart"></i> 324</span>
+                        <span><i class="fas fa-comment"></i> 28</span>
+                    </div>
+                </div>
+                <!-- Mockup Instagram Post 4 -->
+                <div class="aspect-square bg-gray-200 overflow-hidden rounded-xl shadow-lg relative group">
+                    <img src="https://images.unsplash.com/photo-1502657877623-f66bf489d236?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white space-x-4">
+                        <span><i class="fas fa-heart"></i> 210</span>
+                        <span><i class="fas fa-comment"></i> 15</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Modern Dark -->
+    <footer class="bg-charcoal text-white py-16 md:py-32">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="grid lg:grid-cols-4 gap-20">
+                <div class="col-span-2">
+                    <img src="logo.jpg" alt="Tictact Factory" class="h-20 w-20 rounded-full object-cover mb-10">
+                    <p class="text-gray-400 font-light max-w-md leading-relaxed text-sm">
+                        Atelier spécialisé dans les montres vintage et anciennes : achat, vente, réparation et expertise indépendante. <br>Une vision transparente de la valeur de votre temps.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-8 italic">Exploration</h4>
+                    <ul class="space-y-4 text-xs tracking-widest text-white/60">
+                        <li><a href="index.html" class="hover:text-gold transition">Accueil</a></li>
+                        <li><a href="apropos.html" class="hover:text-gold transition">À Propos</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">Services</a></li>
+                        <li><a href="extras.html" class="hover:text-gold transition">Extras</a></li>
+                        <li><a href="proprietaire.html" class="hover:text-gold transition">Propriétaire</a></li>
+                        <li><a href="locataire.html" class="hover:text-gold transition">Annonces</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-8 italic">Contact</h4>
+                    <ul class="space-y-4 text-xs tracking-widest text-white/60 mb-8">
+                        <li>TICTACT FACTORY</li>
+                        <li>contact@tictactfactory.com</li>
+                        <li>+33 (0) 6 00 00 00 00</li>
+                    </ul>
+                    <h4 class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-6 italic">Social</h4>
+                    <a href="https://www.instagram.com/tictactfactory" target="_blank" class="text-white/60 hover:text-gold transition text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-widest text-white/30">
+                <p>&copy; 2026 Tictact Factory. Tous droits réservés.</p>
+                <p><a href="legal/mentions-legales/" class="hover:text-gold transition">Mentions Légales</a> — <a href="legal/cgu/" class="hover:text-gold transition">CGU</a> — <a href="legal/politique-confidentialite/" class="hover:text-gold transition">Confidentialité</a> — Développé par <a href="https://noanweb.com" target="_blank" class="hover:text-gold transition font-bold">Noan Web</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-charcoal z-[100] transform translate-x-full transition-transform duration-500 lg:hidden flex flex-col justify-center items-center">
+        <button id="close-menu" class="absolute top-12 right-12 text-white text-3xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="logo mb-20">
+            <img src="logo.jpg" alt="Tictact Factory" class="h-16 w-16 rounded-full object-cover">
+        </div>
+        <nav class="flex flex-col space-y-8 text-center uppercase tracking-[0.4em] text-xs font-bold text-white/80">
+            <a href="index.html" class="hover:text-gold transition text-gold">Accueil</a>
+            <a href="apropos.html" class="hover:text-gold transition">À Propos</a>
+            <a href="services.html" class="hover:text-gold transition">Services</a>
+            <a href="extras.html" class="hover:text-gold transition">Extras</a>
+            <a href="proprietaire.html" class="hover:text-gold transition">Propriétaire</a>
+            <a href="locataire.html" class="hover:text-gold transition">Locataire</a>
+            <a href="contact.html" class="hover:text-gold transition">Contact</a>
+        </nav>
+        <div class="mt-20 flex space-x-8 text-gold text-2xl">
+            <a href="https://www.instagram.com/tictactfactory" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:contact@tictactfactory.com"><i class="far fa-envelope"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // Animation au scroll pour les éléments avec la classe .reveal
+        document.addEventListener('DOMContentLoaded', function () {
+            const reveals = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window && reveals.length) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('reveal-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15
+                });
+                reveals.forEach((el) => observer.observe(el));
+            } else {
+                // Fallback : affiche tout si IntersectionObserver non supporté
+                reveals.forEach((el) => el.classList.add('reveal-visible'));
+            }
+        });
+    </script>
+</body>
+</html>
